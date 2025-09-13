@@ -1,4 +1,4 @@
-name: X Bot   # ワークフローの名前（自由に設定可能）
+name: X Bot
 
 on:
   schedule:
@@ -28,4 +28,3 @@ jobs:
           X_API_SECRET: ${{ secrets.X_API_SECRET }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
-
