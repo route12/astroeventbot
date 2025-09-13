@@ -8,7 +8,7 @@ next_year = today.year + 1
 new_years_day = datetime(next_year, 1, 1)
 days_remaining = (new_years_day - today).days
 message = "本日は" + today.strftime("%Y年%m月%d日") + "です。\n"
-message += "来年まで残り" + days_remaining + "日です。"
+message += "来年まで残り" + str(days_remaining) + "日です。"
 
 api_key = os.getenv("X_API_KEY")
 api_secret = os.getenv("X_API_SECRET")
