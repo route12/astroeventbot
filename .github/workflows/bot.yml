@@ -2,30 +2,28 @@ name: X Bot   # ワークフローの名前（自由に設定可能）
 
 on:
   schedule:
-    # cron形式（UTC時刻）。ここでは毎日 0:00 UTC = 日本時間 9:00
-    - cron: "0 0 * * *"
-  workflow_dispatch:  # 手動実行も可能にするオプション
+    - cron: "0 12 * * *"
+  workflow_dispatch:
 
 jobs:
   run-bot:
-    runs-on: ubuntu-latest  # 実行環境（GitHubが提供するLinux）
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # リポジトリを取得
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"  # 使用するPythonバージョン
+          python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install requests  # 必要なライブラリをインストール
+        run: pip install -r requirements.txt
 
       - name: Run bot
-        run: python bot.py         # 実行するスクリプト
+        run: python bot.py
         env:
-          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
           X_API_KEY: ${{ secrets.X_API_KEY }}
           X_API_SECRET: ${{ secrets.X_API_SECRET }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
