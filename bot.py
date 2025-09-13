@@ -20,7 +20,7 @@ for row in rows:
     dd = (dt - today).days
     if dd > 0:
         message += name + "まで残り" + str(dd + 1) + "日です。\n"
-    if dd > 29:
+    if dd > 30:
         break
 api_key = os.getenv("X_API_KEY")
 api_secret = os.getenv("X_API_SECRET")
