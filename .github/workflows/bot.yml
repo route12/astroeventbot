@@ -2,7 +2,7 @@ name: X Bot   # ワークフローの名前（自由に設定可能）
 
 on:
   schedule:
-    - cron: "0 12 * * *"
+    - cron: "1 9 * * *"
   workflow_dispatch:
 
 jobs:
