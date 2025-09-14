@@ -1,16 +1,14 @@
 import os
 import requests
 from requests_oauthlib import OAuth1
-from playwright.sync_api import sync_playwright
+from py_mini_racer import py_mini_racer
 
-message = ""
-url = "https://star.static.jp/data/event.html"
-with sync_playwright() as p:
-    browser = p.chromium.launch(headless=True)
-    page = browser.new_page()
-    page.goto(url, timeout=60000)
-    message += page.inner_text("body")
-    browser.close()
+url = "https://star.static.jp/data/event.js"
+response = requests.get(url)
+code = response.text
+ctx = py_mini_racer.MiniRacer()
+ctx.eval(code)
+message = ctx.eval("main()")
 api_key = os.getenv("X_API_KEY")
 api_secret = os.getenv("X_API_SECRET")
 access_token = os.getenv("X_ACCESS_TOKEN")
